@@ -11,12 +11,47 @@ var callFriend = function(){
 
   //code here
 
-
+  var x = callFriend()
+  console.log(x("435-215-9248"))
 
 /*
 
-Write a function that accepts a function as it's first argument and returns a new function (which calls the original function that was passed in) that can only ever be executed once.
-
-Once completed, add a second arguments that allows the function to be executed N number of times. After the function has been called N number of times, console.log('STAHHP');
+Write a function that accepts a function as it's first argument and returns a new function (which calls the 
+original function that was passed in) that can only ever be executed once.
 
 */
+
+function one(two){
+  return function three(){
+    two()
+  }
+}
+
+/* 
+
+Once completed, add a second arguments that allows the function to be executed N number of times. 
+After the function has been called N number of times, console.log('STAHHP');
+*/
+
+function one(two, num){
+  var count = 0;
+
+  return function(){
+
+      while(count < num){
+      two();
+      count++
+      }
+      console.log("stop")
+    }
+  }
+
+
+// Test function
+function add (){
+  console.log('zebra');
+}
+
+let closureVariable = one(add, 6);
+closureVariable();
+
